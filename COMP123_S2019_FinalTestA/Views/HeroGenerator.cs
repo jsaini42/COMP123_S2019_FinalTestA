@@ -116,5 +116,97 @@ namespace COMP123_S2019_FinalTestA.Views
         {
             GenerateRandomPowers();
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // configure the file dialog
+            HeroOpenFileDialog.FileName = "Student.txt";
+            HeroOpenFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            HeroOpenFileDialog.Filter = "Text Files (*.txt)|*.txt| All Files (*.*)|*.*";
+
+            // open the file dialog
+            var result = HeroOpenFileDialog.ShowDialog();
+            if (result != DialogResult.Cancel)
+            {
+                try
+                {
+                    // Open the  streawm for reading
+                    using (StreamReader inputStream = new StreamReader(
+                        File.Open(HeroOpenFileDialog.FileName, FileMode.Open)))
+                    {
+                        // read from the file
+                        Program.hero.HeroName = inputStream.ReadLine());
+                        Program.hero.FirstName = inputStream.ReadLine();
+                        Program.hero.LastName = inputStream.ReadLine();
+                        Program.hero.Fighting = inputStream.ReadLine();
+                        Program.hero.Agility = inputStream.ReadLine();
+                        Program.hero.Strength = inputStream.ReadLine();
+                        Program.hero.Endurance = inputStream.ReadLine();
+                        Program.hero.Reason = inputStream.ReadLine();
+                        Program.hero.Intuition = inputStream.ReadLine();
+                        Program.hero.Psyche = inputStream.ReadLine();
+                        Program.hero.Popularity = inputStream.ReadLine();
+
+                        // cleanup
+                        inputStream.Close();
+                        inputStream.Dispose();
+                    }
+
+
+                }
+                catch (IOException exception)
+                {
+
+
+
+                    MessageBox.Show("ERROR: " + exception.Message, "ERROR",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } }
+            }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // it is for configuring the file dialog
+            HeroSaveFileDialog.FileName = "Hero.txt";
+            HeroSaveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            HeroSaveFileDialog.Filter = "Text Files (*.txt)|*.txt| All Files (*.*)|*.*";
+
+            // it open the file dialog
+            var result = HeroSaveFileDialog.ShowDialog();
+            if (result != DialogResult.Cancel)
+            {
+                // open the stream for writing
+                using (StreamWriter outputStream = new StreamWriter(
+                    File.Open(HeroSaveFileDialog.FileName, FileMode.Create)))
+                {
+                    // for writing content to stram file
+                    outputStream.WriteLine(Program.hero.HeroName);
+                    outputStream.WriteLine(Program.hero.FirstName);
+                    outputStream.WriteLine(Program.hero.LastName);
+                    outputStream.WriteLine(Program.hero.Fighting);
+                    outputStream.WriteLine(Program.hero.Agility);
+                    outputStream.WriteLine(Program.hero.Strength);
+                    outputStream.WriteLine(Program.hero.Endurance);
+                    outputStream.WriteLine(Program.hero.Reason);
+                    outputStream.WriteLine(Program.hero.Intuition);
+                    outputStream.WriteLine(Program.hero.Psyche);
+                    outputStream.WriteLine(Program.hero.Popularity);
+                    outputStream.WriteLine(Program.power);
+
+                    // cleanup
+                    outputStream.Close();
+                    outputStream.Dispose();
+
+                    // give feedback to the user that the file has been saved
+                    // this is a "modal" form
+                    MessageBox.Show("File Saved...", "Saving File...",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
     }
 }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.aboutform.ShowDialog();
+        }
