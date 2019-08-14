@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace COMP123_S2019_FinalTestA.Objects
 {
-    class Hero
+    public class Hero
     {
 
         //Private Instance /variables
@@ -140,7 +140,7 @@ namespace COMP123_S2019_FinalTestA.Objects
 
 
         //constructor
-        Hero()
+        public Hero()
         {
             // Instantiate an empty Power List
             Powers = new List<Power>();

@@ -10,7 +10,7 @@ namespace COMP123_S2019_FinalTestA
     static class Program
     {
         
-        public static HeroGenerator heroGenerator;
+        public static MasterForm heroGenerator;
 
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace COMP123_S2019_FinalTestA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            heroGenerator= new HeroGenerator();
+            heroGenerator= new MasterForm();
             Application.Run(heroGenerator);
         }
     }
