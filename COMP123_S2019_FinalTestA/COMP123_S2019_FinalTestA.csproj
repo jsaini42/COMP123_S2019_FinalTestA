@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\Character.cs" />
     <Compile Include="Objects\Hero.cs" />
     <Compile Include="Objects\Power.cs" />
     <Compile Include="Program.cs" />

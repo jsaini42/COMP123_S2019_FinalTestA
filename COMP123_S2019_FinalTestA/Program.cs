@@ -1,4 +1,5 @@
-﻿using COMP123_S2019_FinalTestA.Views;
+﻿using COMP123_S2019_FinalTestA.Objects;
+using COMP123_S2019_FinalTestA.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace COMP123_S2019_FinalTestA
     {
         
         public static MasterForm heroGenerator;
+        public static Character character;
+        public static Hero hero;
 
 
         /// <summary>
@@ -21,6 +24,8 @@ namespace COMP123_S2019_FinalTestA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            character = new Character();
+            hero = new Hero();
             heroGenerator= new MasterForm();
             Application.Run(heroGenerator);
         }
